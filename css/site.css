@@ -5,12 +5,29 @@
   --white: #e2e4e2;
 }
 
+.logo-font {
+  font-family: ministry, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
 body {
   color: var(--dark);
+  font-family: tablet-gothic, sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.even {
+  font-weight: bold;
 }
 
 nav {
   background: var(--dark);
+}
+
+a.nav-link {
+  text-transform: capitalize;
 }
 
 footer {
@@ -35,6 +52,9 @@ h4,
 h5,
 h6 {
   color: var(--primary);
+  font-family: tablet-gothic, sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 .bsicon {
   color: rgb(85, 60, 123);

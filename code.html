@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Antwaun Johsnon</title>
+    <title>HUNDY: A Coding Project By Antwaun Johsnon</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,6 +12,7 @@
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
     <script src="https://kit.fontawesome.com/e6304ecfad.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/dtc6jfb.css">
 
     <!-- Convert this to an external style sheet -->
     <link rel="stylesheet" href="css/site.css">
@@ -24,7 +25,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">APP NAME</a>
+            <a class="navbar-brand logo-font" href="#">HUNDY</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,17 +61,97 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            // Call Hello World
-                            function helloWorld(){
-                                alert("hello world!")
+                            // get values from the page
+                            //controller function
+                            function getValues() {
+                              //get values from the page
+                              let startValue = document.getElementById("startValue").value;
+                              let endValue = document.getElementById("endValue").value;
+                            
+                              startValue = parseInt(startValue);
+                              endValue = parseInt(endValue);
+                            
+                              if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                //we call generateNumbers
+                                let numbers = generateNums(startValue, endValue);
+                                //we call displayNumbers
+                                displayNums(numbers);
+                              } else {
+                                alert("You must enter a number");
+                              }
                             }
+                            
+                            // generate numbers from startvalue to the endvalue
+                            //logic function
+                            function generateNums(startValue, endValue) {
+                              let numbers = [];
+                            
+                              for (let index = startValue; index <= endValue; index++) {
+                                numbers.push(index);
+                              }
+                            
+                              return numbers;
+                            }
+                            
+                            // display the numbers, mark even numbers bold
+                            // display or view function
+                            function displayNums(numbers) {
+                              let templateRows = "";
+                              for (let index = 0; index < numbers.length; index++) {
+                                let className = "even";
+                                let number = numbers[index];
+                                if (number % 2 == 0) {
+                                  className = "even";
+                                } else {
+                                  className = "odd";
+                                }
+                                //  prismjs does not support syntax highlighting for template literals
+                                templateRows += `<tr><td class="${clasName}">${number}</td></tr>`;
+                              }
+                            
+                              document.getElementById("results").innerHTML = templateRows;
+                            }
+                            
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The code is structured in one function</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World".</p>
+                    <p>The code is structured in three functions</p>
+                    <h5>The Get Values Function</h5>
+                    <p>The <b><em>getValues</em></b> function is used to get the start and end values by parsing the
+                        document for the id
+                        of
+                        <b><em>startValue</em></b> and <b><em>endValue</em></b> respectively. Once we have access to
+                        the start and end
+                        values, we
+                        use the parseInt function to convert the numbers from strings to integers. An if statement is
+                        added to check the validity of the input that is received. If a number is not entered for both
+                        values, the user will be alerted to enter a number.
+                    </p>
+                    <h5>The Generate Nums Fuction</h5>
+                    <p>We begin the <b><em>generateNums</em></b> function by assigned the value of numbers to an empty
+                        <b><em>array</em></b>. This function takes in two parameters, startValue and endValue. We use a
+                        for loop to loop over the input and push each number including
+                        the
+                        endValue into the array array. Once the loop is completed. The function returns the numbers.
+                        This function is called as we check the validity of the numbers using the if statement located
+                        in the getValues functions
+                    </p>
+                    <h5>The Display Nums Function</h5>
+                    <p>The function <b><em>displayNums</em></b> takes one argument, <b><em>numbers</em></b>. We begin
+                        the function by assigning the variable <b><em>templateRows</em></b> to an empty string. In this
+                        function a for loop is used to iterate over the value to determine if the number is even or odd.
+                        Within the for loop, the className variable is set to the value of <b><em>even</em></b>. Within
+                        our for loop we have an if statement that validates whether a number is even or odd using the
+                        formula <b><em>number % 2 == 0</em></b>. The <b><em>modulus</em></b> or <b><em>%</em></b>
+                        returns the remainder of a divison operation. Any number with a modulus of 2 that is equal to 0
+                        is an even number. If the number does not pass the even number validation and else statement is
+                        used to identify the number as odd. We use string concatenation to dynamically add the class
+                        name to the table data and display the number in the table.
+                        Finally use the <b><em>getElementById</em></b> function to find the <b><em>results</em></b> id
+                        and assign the <b><em>innerHTML</em></b> to the <b><em>templateRows</em></b> variable. Once all
+                        validation has completed, the displayNums fuction is executed after the numbers have been
+                        assigned using the generateNums function.</p>
                 </div>
             </div>
         </div>
@@ -81,7 +162,7 @@
             <div class="row row-cols-1  row-cols-lg-3 gy-2">
                 <div class="col order-last order-lg-first text-light">
                     <div>
-                        <span class="text-muted">&copy;2021</span>
+                        <span class="text-muted me-1">&copy; 2021</span>
                         Antwaun Johnson
                     </div>
                 </div>
